@@ -2,7 +2,12 @@
 // @name         Login Override
 // @version      1.0
 // @description  Overrides the login function on a given website
-// @match        https://pass.sdu.edu.cn/*
+// @match        http://pass.sdu.edu.cn/cas/login?*
+// @match        https://pass.sdu.edu.cn/cas/login?*
+// @match        https://pass-sdu-edu-cn-s.atrust.sdu.edu.cn:81/cas/login?*
+// @match        https://pass-sdu-edu-cn.atrust.sdu.edu.cn:81/cas/login?*
+// @match        https://webvpn.sdu.edu.cn/https/77726476706e69737468656265737421e0f6528f69236c45300d8db9d6562d/cas/login?*
+// @require      https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.0/fingerprint2.min.js
 // @grant        none
 // ==/UserScript==
 const YOUR_CUSTOM_DEVICE_FINGERPRINT = "SOMETHING_UNIQUE";
