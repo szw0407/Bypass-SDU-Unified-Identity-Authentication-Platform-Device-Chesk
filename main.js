@@ -7,14 +7,20 @@
 // @match        https://pass-sdu-edu-cn-s.atrust.sdu.edu.cn:81/cas/login?*
 // @match        https://pass-sdu-edu-cn.atrust.sdu.edu.cn:81/cas/login?*
 // @match        https://webvpn.sdu.edu.cn/https/77726476706e69737468656265737421e0f6528f69236c45300d8db9d6562d/cas/login?*
-// @require      https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.0/fingerprint2.min.js
 // @grant        none
 // ==/UserScript==
 const YOUR_CUSTOM_DEVICE_FINGERPRINT = "SOMETHING_UNIQUE";
 
 (function () {
   "use strict";
-
+  function hashString(str) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(str);
+    const hashBuffer = crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+  }
   // Override the login function
   function login() {
     var $u = $("#un"),
@@ -45,7 +51,7 @@ const YOUR_CUSTOM_DEVICE_FINGERPRINT = "SOMETHING_UNIQUE";
     $("#rsa").val(strEnc(u + p + lt, "1", "2", "3"));
     var details_s = YOUR_CUSTOM_DEVICE_FINGERPRINT;
     var murmur = YOUR_CUSTOM_DEVICE_FINGERPRINT;
-    var murmur_s = Fingerprint2.x64hash128(details_s, 31);
+    var murmur_s = hashString(details_s);
     var murmur_md5 = hex_md5(details_s);
     $.post(
       "device",
