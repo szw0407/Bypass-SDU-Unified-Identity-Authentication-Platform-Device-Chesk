@@ -17,11 +17,11 @@ const YOUR_CUSTOM_DEVICE_FINGERPRINT = "SOMETHING_UNIQUE";
   if (location.protocol === 'http:') {
     location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
   } // Redirect to HTTPS if not already
-  if (location.hostname.startsWith('https://pass-sdu-edu-cn.atrust.sdu.edu.cn:81/')) {
-    location.hostname.replace('https://pass-sdu-edu-cn.atrust.sdu.edu.cn:81/', 'https://pass-sdu-edu-cn-s.atrust.sdu.edu.cn:81/')
+  if (location.href.startsWith('https://pass-sdu-edu-cn.atrust.sdu.edu.cn:81/')) {
+    location.href = location.href.replace('https://pass-sdu-edu-cn.atrust.sdu.edu.cn:81/', 'https://pass-sdu-edu-cn-s.atrust.sdu.edu.cn:81/')
   }
-  if (location.hostname.startsWith('https://webvpn.sdu.edu.cn/http/')) {
-    location.hostname.replace('https://webvpn.sdu.edu.cn/http/', 'https://webvpn.sdu.edu.cn/https/')
+  if (location.href.startsWith('https://webvpn.sdu.edu.cn/http/')) {
+    location.href = location.href.replace('https://webvpn.sdu.edu.cn/http/', 'https://webvpn.sdu.edu.cn/https/')
   }
   // Function to hash a string using SHA-256
   function hashString(str) {
