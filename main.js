@@ -1,18 +1,29 @@
 // ==UserScript==
 // @name         Login Override
-// @version      1.0
+// @version      0.2
 // @description  Overrides the login function on a given website
 // @match        http://pass.sdu.edu.cn/cas/login?*
 // @match        https://pass.sdu.edu.cn/cas/login?*
 // @match        https://pass-sdu-edu-cn-s.atrust.sdu.edu.cn:81/cas/login?*
 // @match        https://pass-sdu-edu-cn.atrust.sdu.edu.cn:81/cas/login?*
 // @match        https://webvpn.sdu.edu.cn/https/77726476706e69737468656265737421e0f6528f69236c45300d8db9d6562d/cas/login?*
+// @match        https://webvpn.sdu.edu.cn/http/77726476706e69737468656265737421e0f6528f69236c45300d8db9d6562d/cas/login?*
 // @grant        none
 // ==/UserScript==
 const YOUR_CUSTOM_DEVICE_FINGERPRINT = "SOMETHING_UNIQUE";
 
 (function () {
   "use strict";
+  if (location.protocol === 'http:') {
+    location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+  } // Redirect to HTTPS if not already
+  if (location.hostname.startsWith('https://pass-sdu-edu-cn.atrust.sdu.edu.cn:81/')) {
+    location.hostname.replace('https://pass-sdu-edu-cn.atrust.sdu.edu.cn:81/', 'https://pass-sdu-edu-cn-s.atrust.sdu.edu.cn:81/')
+  }
+  if (location.hostname.startsWith('https://webvpn.sdu.edu.cn/http/')) {
+    location.hostname.replace('https://webvpn.sdu.edu.cn/http/', 'https://webvpn.sdu.edu.cn/https/')
+  }
+  // Function to hash a string using SHA-256
   function hashString(str) {
     const encoder = new TextEncoder();
     const data = encoder.encode(str);
