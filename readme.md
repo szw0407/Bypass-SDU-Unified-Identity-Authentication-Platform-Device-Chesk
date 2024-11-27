@@ -2,7 +2,7 @@
 
 ## 对于所有基于Chromium内核的浏览器
 
-对于使用基于Chrome浏览器的篡改猴（Tampermonkey）扩展的用户，启用开发者模式是根据Manifest V3更新引入的必要条件。
+对于使用新版本基于Chromium内核的浏览器（如Google Chrome, Microsoft Edge, Brave, Opera, Vivaldi等）上篡改猴（Tampermonkey）扩展的用户，启用开发者模式是根据Manifest V3更新引入的必要条件。
 
 请参考Tampermonkey的[官方文档](https://www.tampermonkey.net/faq.php#Q209)，开启这个功能。Firefox不受影响（至少目前是这样）。
 
