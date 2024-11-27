@@ -1,5 +1,11 @@
 # Bypass device check on SDU UAP website
 
+## 对于所有基于Chromium内核的浏览器
+
+对于使用基于Chrome浏览器的篡改猴（Tampermonkey）扩展的用户，启用开发者模式是根据Manifest V3更新引入的必要条件。
+
+请参考Tampermonkey的[官方文档](https://www.tampermonkey.net/faq.php#Q209)，开启这个功能。Firefox不受影响（至少目前是这样）。
+
 ## 更新通知
 
 本脚本不再使用`Fingerprint2`库（本来我以为前端页面使用了这个库是因为后端那边有校验，但实际上并没有，哪种哈希算法都能蒙混过关），而是直接使用了sha256哈希算法，经测试在广告拦截插件的情况下也能正常使用，并且确实可以章程登录（至少在目前是这样的）。
