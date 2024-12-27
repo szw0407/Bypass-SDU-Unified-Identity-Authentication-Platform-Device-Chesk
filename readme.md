@@ -1,5 +1,7 @@
 # Bypass device check on SDU UAP website
 
+小广告：可以看一眼这个项目：[SDU-webvpn-helper](https://github.com/szw0407/SDU-webvpn-helper)
+
 ## 对于所有基于Chromium内核的浏览器
 
 对于使用新版本基于Chromium内核的浏览器（如Google Chrome, Microsoft Edge, Brave, Opera, Vivaldi等）上篡改猴（Tampermonkey）扩展的用户，启用开发者模式是根据Manifest V3更新引入的必要条件。
